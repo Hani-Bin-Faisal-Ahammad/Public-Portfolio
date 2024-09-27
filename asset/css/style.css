@@ -29,10 +29,10 @@ body {
 }
 
 :root {
-    --bg-color: #1f242d;
-    --second-bg-color: #323946;
-    --text-color: #fff;
-    --main-color: #FFFF00;
+    --bg-color: #111111;
+    --second-bg-color: #000000;
+    --text-color: #ffffff;
+    --main-color: #55ce1d;
 }
 
 html {
