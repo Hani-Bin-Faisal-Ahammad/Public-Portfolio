@@ -1,26 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tools | Hani Bin Faisal Ahammad</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #121212; color: #fff; text-align: center; }
-    h1 { margin-top: 20px; }
-    .tool-card { background: #1f1f1f; padding: 20px; margin: 15px auto; width: 300px; border-radius: 10px; }
-    a { display: inline-block; padding: 10px 15px; background: #4cafef; color: #fff; border-radius: 8px; text-decoration: none; }
-    a:hover { background: #3a9ad9; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Page</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for appearance */
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #60a5fa, #a855f7);
+        }
+        .download-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .download-button:hover {
+            transform: scale(1.05);
+            background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+        }
+        .status-message {
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
 </head>
-<body>
-  <h1>Tools</h1>
-  <div class="tool-card">
-    <h2>MP3 Downloader</h2>
-    <a href="mp3-downloader.html">Open</a>
-  </div>
-  <div class="tool-card">
-    <h2>Video Downloader</h2>
-    <a href="video-downloader.html">Open</a>
-  </div>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+
+    <!-- Main Container -->
+    <div class="bg-gray-800 p-8 md:p-12 rounded-2xl shadow-2xl w-full max-w-2xl text-center">
+        
+        <!-- Title and Description -->
+        <h1 class="text-3xl md:text-5xl font-bold mb-4 gradient-text">
+            Super Downloader
+        </h1>
+        <p class="text-gray-400 mb-8 text-sm md:text-base">
+            Enter a URL and select your desired format to get started.
+        </p>
+
+        <!-- URL Input -->
+        <div class="mb-6">
+            <input
+                id="url-input"
+                type="text"
+                placeholder="Paste your video or audio URL here..."
+                class="w-full p-4 rounded-xl bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 placeholder-gray-400"
+            />
+        </div>
+
+        <!-- Format Selection and Download Button -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+            <div class="flex-1 w-full sm:w-auto">
+                <select
+                    id="format-select"
+                    class="w-full p-4 rounded-xl bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 cursor-pointer appearance-none"
+                >
+                    <option value="mp4">Video (.mp4)</option>
+                    <option value="mp3">Audio (.mp3)</option>
+                </select>
+            </div>
+            <button
+                id="download-button"
+                class="download-button flex-1 w-full sm:w-auto p-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+            >
+                <span id="download-icon" data-lucide="download" class="w-5 h-5"></span>
+                Download
+            </button>
+        </div>
+
+        <!-- Status Message -->
+        <div id="status-message" class="hidden mb-6 p-4 rounded-xl text-sm md:text-base font-medium bg-gray-700 text-gray-300">
+            <!-- Status messages will be injected here -->
+        </div>
+
+        <!-- Download Link -->
+        <div id="download-link-container" class="hidden p-4 rounded-xl border border-green-500 bg-green-900 text-green-300 transform scale-100 animate-pulse">
+            <p class="font-semibold mb-2">Success! Your download is ready.</p>
+            <a id="download-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block px-6 py-2 rounded-lg bg-green-500 text-white font-bold hover:bg-green-600 transition-colors duration-300 shadow-md"
+                download
+            >
+                Click to Download
+            </a>
+        </div>
+
+        <!-- Icons for visual distinction -->
+        <div class="mt-8 flex justify-center space-x-4 text-gray-400">
+            <div class="flex items-center gap-2">
+                <span data-lucide="music" class="w-6 h-6"></span>
+                <span class="text-sm">MP3</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span data-lucide="video" class="w-6 h-6"></span>
+                <span class="text-sm">Video</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Initialize Lucide icons on the page
+        lucide.createIcons();
+
+        // Get references to DOM elements
+        const urlInput = document.getElementById('url-input');
+        const formatSelect = document.getElementById('format-select');
+        const downloadButton = document.getElementById('download-button');
+        const statusMessageDiv = document.getElementById('status-message');
+        const downloadLinkContainer = document.getElementById('download-link-container');
+        const downloadLink = document.getElementById('download-link');
+
+        // Function to update the status message
+        function setStatus(message, isError = false) {
+            statusMessageDiv.textContent = message;
+            statusMessageDiv.classList.remove('hidden');
+            if (isError) {
+                statusMessageDiv.classList.remove('bg-gray-700', 'text-gray-300');
+                statusMessageDiv.classList.add('bg-red-900', 'text-red-300');
+            } else {
+                statusMessageDiv.classList.remove('bg-red-900', 'text-red-300');
+                statusMessageDiv.classList.add('bg-gray-700', 'text-gray-300');
+            }
+        }
+
+        // Handle the download button click
+        downloadButton.addEventListener('click', async () => {
+            const url = urlInput.value;
+            const format = formatSelect.value;
+
+            // Clear previous state
+            downloadLinkContainer.classList.add('hidden');
+            setStatus('');
+
+            // Basic URL validation
+            if (!url) {
+                setStatus('Please enter a valid URL.', true);
+                return;
+            }
+
+            // Show processing status
+            setStatus('Processing...');
+            downloadButton.disabled = true;
+
+            // --- Backend API Call Simulation ---
+            // In a real application, you would make a fetch call to your backend API here.
+            // The backend would handle fetching the video/audio and converting it.
+            console.log(`Simulating request to backend for URL: ${url} and format: ${format}`);
+            
+            // Simulating a delay for a more realistic feel
+            try {
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                // Simulating a successful API response
+                const mockApiResult = {
+                    success: true,
+                    message: 'Download ready!',
+                    downloadUrl: `https://example.com/downloads/your-file-${Date.now()}.${format}`
+                };
+
+                if (mockApiResult.success) {
+                    setStatus('Download ready!');
+                    downloadLink.href = mockApiResult.downloadUrl;
+                    downloadLinkContainer.classList.remove('hidden');
+                } else {
+                    // Handle API errors
+                    setStatus('Download failed. Please try again.', true);
+                }
+            } catch (error) {
+                console.error('API call failed:', error);
+                setStatus('An error occurred. Please check the console.', true);
+            } finally {
+                // Re-enable the button regardless of success or failure
+                downloadButton.disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>
