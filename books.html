@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,8 +35,10 @@
             width: 100%;
             padding: 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            gap: 20px;
+            cursor: pointer; /* Indicates the element is clickable */
 
             background-color: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
@@ -50,7 +51,30 @@
         .book-bar:hover {
             transform: translateY(-5px);
         }
+
+        /* Container for the image and text to keep them on the same line */
+        .book-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .book-cover {
+            width: 100px;
+            height: 150px;
+            border-radius: 5px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
         
+        .book-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex-grow: 1;
+        }
+
         .book-title {
             font-size: 1.5em;
             font-weight: bold;
@@ -70,33 +94,63 @@
             color: #e0e0e0;
             font-style: italic;
         }
-
-        /* Container for the rating elements */
+        
         .rating-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px; /* Space between the rating elements */
+            gap: 5px;
+            flex-shrink: 0;
         }
 
-        /* Styling for the numerical rating */
         .numerical-rating {
             font-size: 1em;
             font-weight: bold;
             color: #FFD700;
         }
 
-        /* Styling for the star rating */
         .book-rating {
             font-size: 1.5em;
             color: #FFD700;
         }
 
-        /* Styling for the source text */
         .rating-source {
             font-size: 0.8em;
             color: #aaa;
             font-style: italic;
+        }
+
+        /* --- New CSS for the expandable summary section --- */
+        .book-summary {
+            width: 100%;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none; /* Hidden by default */
+            transition: all 0.5s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        .book-bar.active .book-summary {
+            display: block; /* Show when 'active' class is present */
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .summary-heading {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .summary-content, .thoughts-content {
+            font-size: 1em;
+            line-height: 1.6;
+            color: #e0e0e0;
         }
 
         @media (max-width: 600px) {
@@ -114,76 +168,150 @@
         <h1>My Reading List</h1>
 
         <div class="book-bar">
-            <div class="book-info">
-                <h3 class="book-title"><span class="rank-text">Rank 1 |</span> Shadow Slave</h3>
-                <p class="book-author">Guiltythree</p>
-            </div>
-            <div class="rating-container">
-                <span class="numerical-rating">4.57 / 5</span>
-                <div class="book-rating">
-                    &#9733;&#9733;&#9733;&#9733;&#9734;
+            <div class="book-header">
+                <img src="https://m.media-amazon.com/images/I/419d1T+77yL._SY445_SX342_.jpg" alt="Shadow Slave Cover" class="book-cover">
+                <div class="book-info">
+                    <h3 class="book-title"><span class="rank-text">Rank 1 |</span> Shadow Slave</h3>
+                    <p class="book-author">Guiltythree</p>
                 </div>
-                <span class="rating-source">Source: Goodreads</span>
+                <div class="rating-container">
+                    <span class="numerical-rating">4.57 / 5</span>
+                    <div class="book-rating">
+                        &#9733;&#9733;&#9733;&#9733;&#9734;
+                    </div>
+                    <span class="rating-source">Source: Goodreads</span>
+                </div>
+            </div>
+            <div class="book-summary">
+                <p class="summary-heading">Summary:</p>
+                <p class="summary-content">
+                    In a broken world of endless darkness, Sunny, a young man haunted by a tragic past, enters the Nightmare to earn a chance at a better life. He awakens in the world of the Spell, where he must fight horrifying creatures and collect strange abilities to survive. But the line between reality and the Nightmare begins to blur, and he must face his deepest fears to protect those he cares about.
+                </p>
+                <p class="summary-heading">My Thoughts:</p>
+                <p class="thoughts-content">
+                    Shadow Slave is a masterclass in world-building and character development. The narrative is dark and intense, but the protagonist's growth is incredibly rewarding to follow. The unique magic system and the unforgiving world make every chapter a suspenseful ride.
+                </p>
             </div>
         </div>
 
         <div class="book-bar">
-            <div class="book-info">
-                <h3 class="book-title"><span class="rank-text">Rank 2 |</span> Lord of Mysteries</h3>
-                <p class="book-author">Cuttlefish That Loves Diving</p>
-            </div>
-            <div class="rating-container">
-                <span class="numerical-rating">4.56 / 5</span>
-                <div class="book-rating">
-                    &#9733;&#9733;&#9733;&#9733;&#9734;
+            <div class="book-header">
+                <img src="https://m.media-amazon.com/images/I/51rJj0dG6TL._SY445_SX342_.jpg" alt="Lord of Mysteries Cover" class="book-cover">
+                <div class="book-info">
+                    <h3 class="book-title"><span class="rank-text">Rank 2 |</span> Lord of Mysteries</h3>
+                    <p class="book-author">Cuttlefish That Loves Diving</p>
                 </div>
-                <span class="rating-source">Source: Goodreads</span>
+                <div class="rating-container">
+                    <span class="numerical-rating">4.57 / 5</span>
+                    <div class="book-rating">
+                        &#9733;&#9733;&#9733;&#9733;&#9734;
+                    </div>
+                    <span class="rating-source">Source: Goodreads</span>
+                </div>
+            </div>
+            <div class="book-summary">
+                <p class="summary-heading">Summary:</p>
+                <p class="summary-content">
+                    Zhou Mingrui is reincarnated into a Victorian-era world filled with steampunk technology, ancient prophecies, and mystical abilities. He becomes Klein Moretti, a member of the Tarot Club, and embarks on a journey to uncover the secrets of this world. He must navigate a treacherous world of cults, conspiracies, and cosmic horror while trying to find a way back home.
+                </p>
+                <p class="summary-heading">My Thoughts:</p>
+                <p class="thoughts-content">
+                    Lord of Mysteries is one of the best novels I've ever read. The intricate plot, detailed world-building, and complex power system are unparalleled. The author masterfully weaves together detective fiction, horror, and fantasy into a truly epic story that keeps you hooked from beginning to end.
+                </p>
             </div>
         </div>
 
         <div class="book-bar">
-            <div class="book-info">
-                <h3 class="book-title"><span class="rank-text">Rank 3 |</span> Reverend Insanity</h3>
-                <p class="book-author">Gu Zhen Ren</p>
-            </div>
-            <div class="rating-container">
-                <span class="numerical-rating">4.55 / 5</span>
-                <div class="book-rating">
-                    &#9733;&#9733;&#9733;&#9733;&#9734;
+            <div class="book-header">
+                <img src="https://m.media-amazon.com/images/I/51kP3zX5gOL._SY445_SX342_.jpg" alt="Reverend Insanity Cover" class="book-cover">
+                <div class="book-info">
+                    <h3 class="book-title"><span class="rank-text">Rank 3 |</span> Reverend Insanity</h3>
+                    <p class="book-author">Gu Zhen Ren</p>
                 </div>
-                <span class="rating-source">Source: Goodreads</span>
+                <div class="rating-container">
+                    <span class="numerical-rating">4.55 / 5</span>
+                    <div class="book-rating">
+                        &#9733;&#9733;&#9733;&#9733;&#9734;
+                    </div>
+                    <span class="rating-source">Source: Goodreads</span>
+                </div>
+            </div>
+            <div class="book-summary">
+                <p class="summary-heading">Summary:</p>
+                <p class="summary-content">
+                    Fang Yuan, a ruthless and pragmatic cultivator, is reborn after 500 years of struggle and failure. With his previous life's memories and knowledge, he embarks on a new path to regain his former power and seek ultimate freedom. He must deal with conspiracies, rival cultivators, and a complex world where "gu" (a type of magical insect) determines one's strength and fate.
+                </p>
+                <p class="summary-heading">My Thoughts:</p>
+                <p class="thoughts-content">
+                    Reverend Insanity is a novel that challenges the conventions of its genre. The protagonist is not a hero, but a villain, and his amoral actions and logical approach to the world are fascinating to read. It's a dark and thought-provoking story that explores themes of morality and ambition in a brutal, but well-crafted, fantasy world.
+                </p>
             </div>
         </div>
 
         <div class="book-bar">
-            <div class="book-info">
-                <h3 class="book-title"><span class="rank-text">Rank 4 |</span> Book Name</h3>
-                <p class="book-author">Author</p>
-            </div>
-            <div class="rating-container">
-                <span class="numerical-rating">? / 5</span>
-                <div class="book-rating">
-                    &#9733;&#9733;&#9733;&#9733;&#9734;
+            <div class="book-header">
+                <img src="https://via.placeholder.com/100x150.png?text=Cover+Image" alt="Placeholder Cover" class="book-cover">
+                <div class="book-info">
+                    <h3 class="book-title"><span class="rank-text">Rank 4 |</span> Book Name</h3>
+                    <p class="book-author">Author</p>
                 </div>
-                <span class="rating-source">Source: ?</span>
+                <div class="rating-container">
+                    <span class="numerical-rating">? / 5</span>
+                    <div class="book-rating">
+                        &#9733;&#9733;&#9733;&#9733;&#9734;
+                    </div>
+                    <span class="rating-source">Source: ?</span>
+                </div>
+            </div>
+            <div class="book-summary">
+                <p class="summary-heading">Summary:</p>
+                <p class="summary-content">
+                    [Insert summary here]
+                </p>
+                <p class="summary-heading">My Thoughts:</p>
+                <p class="thoughts-content">
+                    [Insert your thoughts here]
+                </p>
             </div>
         </div>
 
         <div class="book-bar">
-            <div class="book-info">
-                <h3 class="book-title"><span class="rank-text">Rank 5 |</span> Book Name</h3>
-                <p class="book-author">Author</p>
-            </div>
-            <div class="rating-container">
-                <span class="numerical-rating">? / 5</span>
-                <div class="book-rating">
-                    &#9733;&#9733;&#9733;&#9733;&#9734;
+            <div class="book-header">
+                <img src="https://via.placeholder.com/100x150.png?text=Cover+Image" alt="Placeholder Cover" class="book-cover">
+                <div class="book-info">
+                    <h3 class="book-title"><span class="rank-text">Rank 5 |</span> Book Name</h3>
+                    <p class="book-author">Author</p>
                 </div>
-                <span class="rating-source">Source: ?</span>
+                <div class="rating-container">
+                    <span class="numerical-rating">? / 5</span>
+                    <div class="book-rating">
+                        &#9733;&#9733;&#9733;&#9733;&#9734;
+                    </div>
+                    <span class="rating-source">Source: ?</span>
+                </div>
+            </div>
+            <div class="book-summary">
+                <p class="summary-heading">Summary:</p>
+                <p class="summary-content">
+                    [Insert summary here]
+                </p>
+                <p class="summary-heading">My Thoughts:</p>
+                <p class="thoughts-content">
+                    [Insert your thoughts here]
+                </p>
             </div>
         </div>
-
     </section>
 
+    <script>
+        const bookBars = document.querySelectorAll('.book-bar');
+
+        bookBars.forEach(bar => {
+            bar.addEventListener('click', () => {
+                // Toggle the 'active' class on the clicked book-bar
+                bar.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 </html>
