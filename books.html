@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +39,7 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
-            cursor: pointer; /* Indicates the element is clickable */
+            cursor: pointer;
 
             background-color: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
@@ -52,7 +53,6 @@
             transform: translateY(-5px);
         }
 
-        /* Container for the image and text to keep them on the same line */
         .book-header {
             width: 100%;
             display: flex;
@@ -120,14 +120,13 @@
             font-style: italic;
         }
 
-        /* --- New CSS for the expandable summary section --- */
         .book-summary {
             width: 100%;
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.3);
             border-radius: 8px;
             margin-top: 10px;
-            display: none; /* Hidden by default */
+            display: none;
             transition: all 0.5s ease-in-out;
             max-height: 0;
             overflow: hidden;
@@ -135,7 +134,7 @@
         }
 
         .book-bar.active .book-summary {
-            display: block; /* Show when 'active' class is present */
+            display: block;
             max-height: 500px;
             opacity: 1;
         }
@@ -169,7 +168,7 @@
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="https://m.media-amazon.com/images/I/419d1T+77yL._SY445_SX342_.jpg" alt="Shadow Slave Cover" class="book-cover">
+                <img src="assets/shadowslave.png" alt="Shadow Slave Cover" class="book-cover">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 1 |</span> Shadow Slave</h3>
                     <p class="book-author">Guiltythree</p>
@@ -196,7 +195,7 @@
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="https://m.media-amazon.com/images/I/51rJj0dG6TL._SY445_SX342_.jpg" alt="Lord of Mysteries Cover" class="book-cover">
+                <img src="assets/lordofmysteries.png" alt="Lord of Mysteries Cover" class="book-cover">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 2 |</span> Lord of Mysteries</h3>
                     <p class="book-author">Cuttlefish That Loves Diving</p>
@@ -223,7 +222,7 @@
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="https://m.media-amazon.com/images/I/51kP3zX5gOL._SY445_SX342_.jpg" alt="Reverend Insanity Cover" class="book-cover">
+                <img src="assets/reverendinsanity.png" alt="Reverend Insanity Cover" class="book-cover">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 3 |</span> Reverend Insanity</h3>
                     <p class="book-author">Gu Zhen Ren</p>
@@ -250,7 +249,7 @@
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="https://via.placeholder.com/100x150.png?text=Cover+Image" alt="Placeholder Cover" class="book-cover">
+                <img src="assets/placeholder.png" alt="Placeholder Cover" class="book-cover">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 4 |</span> Book Name</h3>
                     <p class="book-author">Author</p>
@@ -277,7 +276,7 @@
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="https://via.placeholder.com/100x150.png?text=Cover+Image" alt="Placeholder Cover" class="book-cover">
+                <img src="assets/placeholder.png" alt="Placeholder Cover" class="book-cover">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 5 |</span> Book Name</h3>
                     <p class="book-author">Author</p>
@@ -308,7 +307,6 @@
 
         bookBars.forEach(bar => {
             bar.addEventListener('click', () => {
-                // Toggle the 'active' class on the clicked book-bar
                 bar.classList.toggle('active');
             });
         });
