@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookshelf</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* The main section container with a background image */
+        .books-section {
+            padding: 50px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-image: url('https://images.unsplash.com/photo-1549414437-02e0ce711739'); /* A sample background image */
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        /* Styling for each individual book bar */
+        .book-bar {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            /* The 'frosted glass' effect */
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .book-bar:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Text styling within the bars */
+        .book-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .book-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .book-author {
+            font-size: 1em;
+            color: #e0e0e0;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .book-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="books-section">
+        <h1>My Reading List</h1>
+
+        <div class="book-bar">
+            <div class="book-info">
+                <h3 class="book-title">The Midnight Library</h3>
+                <p class="book-author">Matt Haig</p>
+            </div>
+        </div>
+
+        <div class="book-bar">
+            <div class="book-info">
+                <h3 class="book-title">Project Hail Mary</h3>
+                <p class="book-author">Andy Weir</p>
+            </div>
+        </div>
+
+        <div class="book-bar">
+            <div class="book-info">
+                <h3 class="book-title">Dune</h3>
+                <p class="book-author">Frank Herbert</p>
+            </div>
+        </div>
+
+        <div class="book-bar">
+            <div class="book-info">
+                <h3 class="book-title">Sapiens: A Brief History of Humankind</h3>
+                <p class="book-author">Yuval Noah Harari</p>
+            </div>
+        </div>
+
+        <div class="book-bar">
+            <div class="book-info">
+                <h3 class="book-title">The Lord of the Rings</h3>
+                <p class="book-author">J.R.R. Tolkien</p>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+</html>
