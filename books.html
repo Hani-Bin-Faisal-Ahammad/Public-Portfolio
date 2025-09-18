@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Bookshelf</title>
+    <title>My Favorite Books</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
+            background-color: #000000;
             margin: 0;
             padding: 0;
         }
 
-        /* The main section container with a background image */
         .books-section {
             padding: 50px 20px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             gap: 20px;
-            background-image: url('https://images.unsplash.com/photo-1549414437-02e0ce711739'); /* A sample background image */
-            background-size: cover;
-            background-position: center;
+            background-image: none;
             color: #ffffff;
+            
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         h1 {
@@ -32,7 +32,6 @@
             margin-bottom: 20px;
         }
 
-        /* Styling for each individual book bar */
         .book-bar {
             width: 100%;
             padding: 20px;
@@ -40,7 +39,6 @@
             justify-content: space-between;
             align-items: center;
 
-            /* The 'frosted glass' effect */
             background-color: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             border-radius: 10px;
@@ -52,24 +50,52 @@
         .book-bar:hover {
             transform: translateY(-5px);
         }
-
-        /* Text styling within the bars */
-        .book-info {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
+        
         .book-title {
             font-size: 1.5em;
             font-weight: bold;
             color: #fff;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+        }
+        
+        .rank-text {
+            font-style: italic;
+            font-weight: normal;
+            margin-right: 10px;
         }
 
         .book-author {
             font-size: 1em;
             color: #e0e0e0;
+            font-style: italic;
+        }
+
+        /* Container for the rating elements */
+        .rating-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px; /* Space between the rating elements */
+        }
+
+        /* Styling for the numerical rating */
+        .numerical-rating {
+            font-size: 1em;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        /* Styling for the star rating */
+        .book-rating {
+            font-size: 1.5em;
+            color: #FFD700;
+        }
+
+        /* Styling for the source text */
+        .rating-source {
+            font-size: 0.8em;
+            color: #aaa;
             font-style: italic;
         }
 
@@ -89,36 +115,71 @@
 
         <div class="book-bar">
             <div class="book-info">
-                <h3 class="book-title">The Midnight Library</h3>
-                <p class="book-author">Matt Haig</p>
+                <h3 class="book-title"><span class="rank-text">Rank 1 |</span> Shadow Slave</h3>
+                <p class="book-author">Guiltythree</p>
+            </div>
+            <div class="rating-container">
+                <span class="numerical-rating">4.57 / 5</span>
+                <div class="book-rating">
+                    &#9733;&#9733;&#9733;&#9733;&#9734;
+                </div>
+                <span class="rating-source">Source: Goodreads</span>
             </div>
         </div>
 
         <div class="book-bar">
             <div class="book-info">
-                <h3 class="book-title">Project Hail Mary</h3>
-                <p class="book-author">Andy Weir</p>
+                <h3 class="book-title"><span class="rank-text">Rank 2 |</span> Lord of Mysteries</h3>
+                <p class="book-author">Cuttlefish That Loves Diving</p>
+            </div>
+            <div class="rating-container">
+                <span class="numerical-rating">4.56 / 5</span>
+                <div class="book-rating">
+                    &#9733;&#9733;&#9733;&#9733;&#9734;
+                </div>
+                <span class="rating-source">Source: Goodreads</span>
             </div>
         </div>
 
         <div class="book-bar">
             <div class="book-info">
-                <h3 class="book-title">Dune</h3>
-                <p class="book-author">Frank Herbert</p>
+                <h3 class="book-title"><span class="rank-text">Rank 3 |</span> Reverend Insanity</h3>
+                <p class="book-author">Gu Zhen Ren</p>
+            </div>
+            <div class="rating-container">
+                <span class="numerical-rating">4.55 / 5</span>
+                <div class="book-rating">
+                    &#9733;&#9733;&#9733;&#9733;&#9734;
+                </div>
+                <span class="rating-source">Source: Goodreads</span>
             </div>
         </div>
 
         <div class="book-bar">
             <div class="book-info">
-                <h3 class="book-title">Sapiens: A Brief History of Humankind</h3>
-                <p class="book-author">Yuval Noah Harari</p>
+                <h3 class="book-title"><span class="rank-text">Rank 4 |</span> Book Name</h3>
+                <p class="book-author">Author</p>
+            </div>
+            <div class="rating-container">
+                <span class="numerical-rating">? / 5</span>
+                <div class="book-rating">
+                    &#9733;&#9733;&#9733;&#9733;&#9734;
+                </div>
+                <span class="rating-source">Source: ?</span>
             </div>
         </div>
 
         <div class="book-bar">
             <div class="book-info">
-                <h3 class="book-title">The Lord of the Rings</h3>
-                <p class="book-author">J.R.R. Tolkien</p>
+                <h3 class="book-title"><span class="rank-text">Rank 5 |</span> Book Name</h3>
+                <p class="book-author">Author</p>
+            </div>
+            <div class="rating-container">
+                <span class="numerical-rating">? / 5</span>
+                <div class="book-rating">
+                    &#9733;&#9733;&#9733;&#9733;&#9734;
+                </div>
+                <span class="rating-source">Source: ?</span>
             </div>
         </div>
 
