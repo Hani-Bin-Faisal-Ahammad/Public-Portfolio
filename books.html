@@ -168,7 +168,7 @@
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1647413550l/59695679._SY475_.jpg" alt="Shadow Slave Cover" class="book-cover">
+                <img src="" alt="Shadow Slave Cover" class="book-cover" data-book="shadowslave">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 1 |</span> Shadow Slave</h3>
                     <p class="book-author">Guiltythree</p>
@@ -195,7 +195,7 @@
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1550785121l/43467472._SY475_.jpg" alt="Lord of Mysteries Cover" class="book-cover">
+                <img src="" alt="Lord of Mysteries Cover" class="book-cover" data-book="lordofmysteries">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 2 |</span> Lord of Mysteries</h3>
                     <p class="book-author">Cuttlefish That Loves Diving</p>
@@ -222,7 +222,7 @@
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1583287132l/51079366._SY475_.jpg" alt="Reverend Insanity Cover" class="book-cover">
+                <img src="" alt="Reverend Insanity Cover" class="book-cover" data-book="reverendinsanity">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 3 |</span> Reverend Insanity</h3>
                     <p class="book-author">Gu Zhen Ren</p>
@@ -249,7 +249,7 @@
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="https://via.placeholder.com/100x150.png?text=Cover+Image" alt="Placeholder Cover" class="book-cover">
+                <img src="" alt="Placeholder Cover" class="book-cover" data-book="placeholder4">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 4 |</span> Book Name</h3>
                     <p class="book-author">Author</p>
@@ -276,7 +276,7 @@
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="https://via.placeholder.com/100x150.png?text=Cover+Image" alt="Placeholder Cover" class="book-cover">
+                <img src="" alt="Placeholder Cover" class="book-cover" data-book="placeholder5">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 5 |</span> Book Name</h3>
                     <p class="book-author">Author</p>
@@ -303,8 +303,51 @@
     </section>
 
     <script>
-        const bookBars = document.querySelectorAll('.book-bar');
+        // Data for book covers, you can add more links to the arrays below
+        const bookCovers = {
+            shadowslave: [
+                'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1647413550l/59695679._SY475_.jpg',
+                'https://cdn.royalroad.com/public/covers-large/47094-shadow-slave.jpg',
+                'https://m.media-amazon.com/images/I/419d1T+77yL._SY445_SX342_.jpg'
+            ],
+            lordofmysteries: [
+                'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1550785121l/43467472._SY475_.jpg',
+                'https://cdn.royalroad.com/public/covers-large/42790-lord-of-mysteries.jpg',
+                'https://m.media-amazon.com/images/I/51rJj0dG6TL._SY445_SX342_.jpg'
+            ],
+            reverendinsanity: [
+                'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1583287132l/51079366._SY475_.jpg',
+                'https://cdn.royalroad.com/public/covers-large/34991-reverend-insanity.jpg',
+                'https://m.media-amazon.com/images/I/51kP3zX5gOL._SY445_SX342_.jpg'
+            ],
+            placeholder: [
+                'https://via.placeholder.com/100x150.png?text=Cover+1',
+                'https://via.placeholder.com/100x150.png?text=Cover+2',
+                'https://via.placeholder.com/100x150.png?text=Cover+3'
+            ]
+        };
 
+        const bookCoversElements = document.querySelectorAll('.book-cover');
+
+        function getRandomCover(bookName) {
+            const covers = bookCovers[bookName];
+            if (covers) {
+                const randomIndex = Math.floor(Math.random() * covers.length);
+                return covers[randomIndex];
+            }
+            return '';
+        }
+
+        // Update image sources when the page loads
+        window.onload = function() {
+            bookCoversElements.forEach(img => {
+                const bookName = img.dataset.book;
+                img.src = getRandomCover(bookName);
+            });
+        };
+
+        // Existing script for toggling the summary
+        const bookBars = document.querySelectorAll('.book-bar');
         bookBars.forEach(bar => {
             bar.addEventListener('click', () => {
                 bar.classList.toggle('active');
