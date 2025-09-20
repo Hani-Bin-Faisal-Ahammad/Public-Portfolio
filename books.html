@@ -10,13 +10,33 @@
             margin: 0;
             padding: 0;
             color: #ffffff;
+            
+            /* The base color of the sky */
+            background-color: #000000;
+            
+            /* Creates the stars with multiple radial gradients */
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 50px 160px, #ddd, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 120px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 130px 140px, #eee, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 150px 180px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 170px 20px, #eee, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 200px 50px, #ddd, rgba(0,0,0,0));
+            
+            /* Repeats the star patterns */
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            
+            /* Applies a subtle twinkling animation */
+            animation: move-bg 100s infinite linear;
+        }
 
-            /* --- New background image properties --- */
-            background-color: #121212; /* Fallback color for when image isn't loaded */
-            background-image: url('https://images.unsplash.com/photo-1544376793-a4c3f56860c2?q=80&w=2670&auto=format&fit=crop'); 
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
+        /* Keyframe animation to make the stars move and create a parallax effect */
+        @keyframes move-bg {
+            from { background-position: 0 0; }
+            to { background-position: 1000px 500px; }
         }
 
         .books-section {
@@ -26,7 +46,6 @@
             flex-direction: column;
             gap: 20px;
             
-            /* Background image is now on the body, so we can remove it here */
             background-image: none;
             
             max-width: 900px;
