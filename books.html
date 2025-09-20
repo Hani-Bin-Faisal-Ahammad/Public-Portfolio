@@ -141,6 +141,7 @@
             font-style: italic;
         }
         
+        /* New styling for the rating system */
         .rating-container {
             display: flex;
             flex-direction: column;
@@ -155,9 +156,26 @@
             color: #FFD700;
         }
 
-        .book-rating {
+        /* --- New CSS for star rating display --- */
+        .stars {
+            display: inline-block;
             font-size: 1.5em;
             color: #FFD700;
+        }
+        .stars::before {
+            content: '★★★★★';
+            -webkit-text-stroke: 1px #000;
+            text-stroke: 1px #000;
+            color: #ccc;
+        }
+        .stars::after {
+            content: '★★★★★';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #FFD700;
+            overflow: hidden;
+            width: var(--rating-width);
         }
 
         .rating-source {
@@ -236,10 +254,8 @@
                     <p class="book-author">Guiltythree</p>
                 </div>
                 <div class="rating-container">
-                    <span class="numerical-rating">4.5 / 5</span>
-                    <div class="book-rating">
-                        &#9733;&#9733;&#9733;&#9733;&#9734;
-                    </div>
+                    <span class="numerical-rating">4.57 / 5</span>
+                    <div class="stars" style="--rating-width: 91.4%;"></div>
                     <span class="rating-source">Source: Goodreads</span>
                 </div>
             </div>
@@ -263,10 +279,8 @@
                     <p class="book-author">Cuttlefish That Loves Diving</p>
                 </div>
                 <div class="rating-container">
-                    <span class="numerical-rating">4.5 / 5</span>
-                    <div class="book-rating">
-                        &#9733;&#9733;&#9733;&#9733;&#9734;
-                    </div>
+                    <span class="numerical-rating">4.57 / 5</span>
+                    <div class="stars" style="--rating-width: 91.4%;"></div>
                     <span class="rating-source">Source: Goodreads</span>
                 </div>
             </div>
@@ -290,10 +304,8 @@
                     <p class="book-author">Gu Zhen Ren</p>
                 </div>
                 <div class="rating-container">
-                    <span class="numerical-rating">4.5 / 5</span>
-                    <div class="book-rating">
-                        &#9733;&#9733;&#9733;&#9733;&#9734;
-                    </div>
+                    <span class="numerical-rating">4.55 / 5</span>
+                    <div class="stars" style="--rating-width: 91%;"></div>
                     <span class="rating-source">Source: Goodreads</span>
                 </div>
             </div>
@@ -317,10 +329,8 @@
                     <p class="book-author">Author</p>
                 </div>
                 <div class="rating-container">
-                    <span class="numerical-rating">4.5 / 5</span>
-                    <div class="book-rating">
-                        &#9733;&#9733;&#9733;&#9733;&#9734;
-                    </div>
+                    <span class="numerical-rating">? / 5</span>
+                    <div class="stars" style="--rating-width: 80%;"></div>
                     <span class="rating-source">Source: ?</span>
                 </div>
             </div>
@@ -344,10 +354,8 @@
                     <p class="book-author">Author</p>
                 </div>
                 <div class="rating-container">
-                    <span class="numerical-rating">4.5 / 5</span>
-                    <div class="book-rating">
-                        &#9733;&#9733;&#9733;&#9733;&#9734;
-                    </div>
+                    <span class="numerical-rating">? / 5</span>
+                    <div class="stars" style="--rating-width: 80%;"></div>
                     <span class="rating-source">Source: ?</span>
                 </div>
             </div>
