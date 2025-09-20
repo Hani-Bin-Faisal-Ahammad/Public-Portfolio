@@ -39,13 +39,27 @@
             align-items: center;
             gap: 20px;
             cursor: pointer;
-
-            background-color: rgba(255, 255, 255, 0.1); /* Changed to a lower alpha value for more transparency */
             backdrop-filter: blur(10px);
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+        }
+        
+        /* Default background color */
+        .book-bar {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Specific background colors for each book */
+        .book-bar.shadow-slave {
+            background-color: rgba(65, 105, 225, 0.2); /* Royal Blue */
+        }
+        .book-bar.lord-of-mysteries {
+            background-color: rgba(184, 134, 11, 0.2); /* Dark Goldenrod */
+        }
+        .book-bar.reverend-insanity {
+            background-color: rgba(178, 34, 34, 0.2); /* Firebrick Red */
         }
 
         .book-bar:hover {
@@ -174,7 +188,7 @@
     <section class="books-section">
         <h1>My Reading List</h1>
 
-        <div class="book-bar">
+        <div class="book-bar shadow-slave">
             <div class="book-header">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 1 |</span> Shadow Slave</h3>
@@ -201,7 +215,7 @@
             </div>
         </div>
 
-        <div class="book-bar">
+        <div class="book-bar lord-of-mysteries">
             <div class="book-header">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 2 |</span> Lord of Mysteries</h3>
@@ -228,7 +242,7 @@
             </div>
         </div>
 
-        <div class="book-bar">
+        <div class="book-bar reverend-insanity">
             <div class="book-header">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 3 |</span> Reverend Insanity</h3>
