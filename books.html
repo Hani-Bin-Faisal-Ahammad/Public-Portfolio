@@ -20,7 +20,6 @@
             gap: 20px;
             background-image: none;
             color: #ffffff;
-            
             max-width: 900px;
             margin: 0 auto;
         }
@@ -40,7 +39,6 @@
             align-items: center;
             gap: 20px;
             cursor: pointer;
-
             background-color: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             border-radius: 10px;
@@ -58,14 +56,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .book-cover {
-            width: 100px;
-            height: 150px;
-            border-radius: 5px;
-            object-fit: cover;
-            margin-right: 20px;
         }
         
         .book-info {
@@ -134,7 +124,9 @@
         }
 
         .book-bar.active .book-summary {
-            display: block;
+            display: flex; /* Changed from block to flex for button alignment */
+            flex-direction: column;
+            align-items: flex-start;
             max-height: 500px;
             opacity: 1;
         }
@@ -150,6 +142,22 @@
             font-size: 1em;
             line-height: 1.6;
             color: #e0e0e0;
+            margin-bottom: 15px;
+        }
+
+        /* --- New Button Styling --- */
+        .read-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .read-button:hover {
+            background-color: #2980b9;
         }
 
         @media (max-width: 600px) {
@@ -168,7 +176,6 @@
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="" alt="Shadow Slave Cover" class="book-cover" data-book="shadowslave">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 1 |</span> Shadow Slave</h3>
                     <p class="book-author">Guiltythree</p>
@@ -190,12 +197,12 @@
                 <p class="thoughts-content">
                     Shadow Slave is a masterclass in world-building and character development. The narrative is dark and intense, but the protagonist's growth is incredibly rewarding to follow. The unique magic system and the unforgiving world make every chapter a suspenseful ride.
                 </p>
+                <a href="https://novelbin.com/novel/shadow-slave" class="read-button" target="_blank">Read This Book</a>
             </div>
         </div>
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="" alt="Lord of Mysteries Cover" class="book-cover" data-book="lordofmysteries">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 2 |</span> Lord of Mysteries</h3>
                     <p class="book-author">Cuttlefish That Loves Diving</p>
@@ -217,12 +224,12 @@
                 <p class="thoughts-content">
                     Lord of Mysteries is one of the best novels I've ever read. The intricate plot, detailed world-building, and complex power system are unparalleled. The author masterfully weaves together detective fiction, horror, and fantasy into a truly epic story that keeps you hooked from beginning to end.
                 </p>
+                <a href="https://novelbin.com/novel/lord-of-mysteries-17122143" class="read-button" target="_blank">Read This Book</a>
             </div>
         </div>
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="" alt="Reverend Insanity Cover" class="book-cover" data-book="reverendinsanity">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 3 |</span> Reverend Insanity</h3>
                     <p class="book-author">Gu Zhen Ren</p>
@@ -244,12 +251,12 @@
                 <p class="thoughts-content">
                     Reverend Insanity is a novel that challenges the conventions of its genre. The protagonist is not a hero, but a villain, and his amoral actions and logical approach to the world are fascinating to read. It's a dark and thought-provoking story that explores themes of morality and ambition in a brutal, but well-crafted, fantasy world.
                 </p>
+                <a href="https://novelbin.com/novel/reverend-insanity-17112024" class="read-button" target="_blank">Read This Book</a>
             </div>
         </div>
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="" alt="Placeholder Cover" class="book-cover" data-book="placeholder4">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 4 |</span> Book Name</h3>
                     <p class="book-author">Author</p>
@@ -271,12 +278,12 @@
                 <p class="thoughts-content">
                     [Insert your thoughts here]
                 </p>
+                <a href="#" class="read-button">Read This Book</a>
             </div>
         </div>
 
         <div class="book-bar">
             <div class="book-header">
-                <img src="" alt="Placeholder Cover" class="book-cover" data-book="placeholder5">
                 <div class="book-info">
                     <h3 class="book-title"><span class="rank-text">Rank 5 |</span> Book Name</h3>
                     <p class="book-author">Author</p>
@@ -298,56 +305,14 @@
                 <p class="thoughts-content">
                     [Insert your thoughts here]
                 </p>
+                <a href="#" class="read-button">Read This Book</a>
             </div>
         </div>
     </section>
 
     <script>
-        // Data for book covers, you can add more links to the arrays below
-        const bookCovers = {
-            shadowslave: [
-                'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1647413550l/59695679._SY475_.jpg',
-                'https://cdn.royalroad.com/public/covers-large/47094-shadow-slave.jpg',
-                'https://m.media-amazon.com/images/I/419d1T+77yL._SY445_SX342_.jpg'
-            ],
-            lordofmysteries: [
-                'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1550785121l/43467472._SY475_.jpg',
-                'https://cdn.royalroad.com/public/covers-large/42790-lord-of-mysteries.jpg',
-                'https://m.media-amazon.com/images/I/51rJj0dG6TL._SY445_SX342_.jpg'
-            ],
-            reverendinsanity: [
-                'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1583287132l/51079366._SY475_.jpg',
-                'https://cdn.royalroad.com/public/covers-large/34991-reverend-insanity.jpg',
-                'https://m.media-amazon.com/images/I/51kP3zX5gOL._SY445_SX342_.jpg'
-            ],
-            placeholder: [
-                'https://via.placeholder.com/100x150.png?text=Cover+1',
-                'https://via.placeholder.com/100x150.png?text=Cover+2',
-                'https://via.placeholder.com/100x150.png?text=Cover+3'
-            ]
-        };
-
-        const bookCoversElements = document.querySelectorAll('.book-cover');
-
-        function getRandomCover(bookName) {
-            const covers = bookCovers[bookName];
-            if (covers) {
-                const randomIndex = Math.floor(Math.random() * covers.length);
-                return covers[randomIndex];
-            }
-            return '';
-        }
-
-        // Update image sources when the page loads
-        window.onload = function() {
-            bookCoversElements.forEach(img => {
-                const bookName = img.dataset.book;
-                img.src = getRandomCover(bookName);
-            });
-        };
-
-        // Existing script for toggling the summary
         const bookBars = document.querySelectorAll('.book-bar');
+
         bookBars.forEach(bar => {
             bar.addEventListener('click', () => {
                 bar.classList.toggle('active');
