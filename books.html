@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Favorite Books</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@700&family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Lora', serif;
+            background-color: #000000;
             margin: 0;
             padding: 0;
             color: #ffffff;
@@ -113,6 +119,18 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
             white-space: nowrap;
         }
+
+        /* Unique Font Styles for each book title */
+        .book-title.shadow-slave {
+            font-family: 'Cinzel', serif;
+        }
+        .book-title.lord-of-mysteries {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .book-title.reverend-insanity {
+            font-family: 'Alegreya Sans SC', sans-serif;
+            font-weight: 700;
+        }
         
         .rank-text {
             font-style: italic;
@@ -217,7 +235,7 @@
         <div class="book-bar shadow-slave">
             <div class="book-header">
                 <div class="book-info">
-                    <h3 class="book-title"><span class="rank-text">Rank 1 |</span> Shadow Slave</h3>
+                    <h3 class="book-title shadow-slave"><span class="rank-text">Rank 1 |</span> Shadow Slave</h3>
                     <p class="book-author">Guiltythree</p>
                 </div>
                 <div class="rating-container">
@@ -244,7 +262,7 @@
         <div class="book-bar lord-of-mysteries">
             <div class="book-header">
                 <div class="book-info">
-                    <h3 class="book-title"><span class="rank-text">Rank 2 |</span> Lord of Mysteries</h3>
+                    <h3 class="book-title lord-of-mysteries"><span class="rank-text">Rank 2 |</span> Lord of Mysteries</h3>
                     <p class="book-author">Cuttlefish That Loves Diving</p>
                 </div>
                 <div class="rating-container">
@@ -271,7 +289,7 @@
         <div class="book-bar reverend-insanity">
             <div class="book-header">
                 <div class="book-info">
-                    <h3 class="book-title"><span class="rank-text">Rank 3 |</span> Reverend Insanity</h3>
+                    <h3 class="book-title reverend-insanity"><span class="rank-text">Rank 3 |</span> Reverend Insanity</h3>
                     <p class="book-author">Gu Zhen Ren</p>
                 </div>
                 <div class="rating-container">
